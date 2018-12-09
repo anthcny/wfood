@@ -48,6 +48,28 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+  /* ---------------- */
+#shopcart:hover{
+    color: #fac564;
+}
+
+#cartSum{
+  margin-right: 0.2em;
+  margin-left: 0.7em; 
+  color: inherit
+}
+
+#iconRubNearCart{
+  color: inherit;
+}
+
+#cartIcon{
+  font-size: 1.5em;
+  color: inherit;
+}
+
+   /* ---------------- */
+
 @-ms-viewport {
   width: device-width; }
 
@@ -8973,3 +8995,4 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+

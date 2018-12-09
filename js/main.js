@@ -1,5 +1,5 @@
  AOS.init({
- 	duration: 800,
+ 	duration: 5000,
  	easing: 'slide'
  });
 
@@ -290,7 +290,6 @@
 	});
 
 	$('#appointment_time').timepicker();
-
 
 
 
