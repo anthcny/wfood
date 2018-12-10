@@ -53,10 +53,26 @@ html {
     color: #fac564;
 }
 
+#shopcart{
+  display: flex; 
+  align-items: center;
+}
+
+.cartButton{
+  background-color: inherit ;
+}
+
+.addToCartClicked{
+  background-color: rgb(51, 70, 2) !important;
+}
+
+
 #cartSum{
   margin-right: 0.2em;
   margin-left: 0.7em; 
-  color: inherit
+  color: inherit;
+  min-width: 2.5em;
+  text-align: end;
 }
 
 #iconRubNearCart{

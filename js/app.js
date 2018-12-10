@@ -113,11 +113,38 @@ function contentLoad(){
 }
 
 function addHandlersToCartButton(){
+    let clickFuncActive = false;
+    let id = '';
     $('.cartButton').bind('click', function(){
-        //console.log($(this)[0].dataset.id);
+        if(clickFuncActive){
+            if(id === $(this)[0].dataset.id)
+                    return;
+        }
+        id = $(this)[0].dataset.id;
+        clickFuncActive = true;
         saveItemInLocalStorage($(this)[0].dataset.id)
-        updateCartSumDisplay();
+        animateAddToCartBtn($(this), ()=>{clickFuncActive =  false});
+        updateCartSumDisplay(getCartSum(), true);
     })
+}
+
+function animateAddToCartBtn(domElBtn, cb){
+   domElBtn.fadeToggle(200, function(){
+    domElBtn.empty();
+    domElBtn.addClass('addToCartClicked');
+    domElBtn.append('Добавлен');
+    domElBtn.fadeToggle(200, function(){
+        setTimeout(() => {
+            domElBtn.fadeToggle(200, function(){
+                domElBtn.removeClass('addToCartClicked');
+                domElBtn.empty();
+                domElBtn.append('В корзину');
+                domElBtn.fadeToggle(200);
+                cb();
+                });
+            }, 700);
+        });
+    });
 }
 
 function saveItemInLocalStorage(id){
@@ -138,16 +165,13 @@ function saveItemInLocalStorage(id){
         cart[id] = 1;
         localStorage.setItem('cart', JSON.stringify(cart));
     }
-
-    //console.log(localStorage.cart)
 }
 
-function updateCartSumDisplay(){
+function getCartSum(){
     let cart = localStorage.cart;
     if(!cart){
-        return;
+        return cart;
     }
-    //console.log(cart);
     let sum = 0;
     cart = JSON.parse(cart);
     Object.keys(cart).forEach(key => {
@@ -157,20 +181,50 @@ function updateCartSumDisplay(){
             }
         })
     })
-    if(sum <= 0){
-        $('#cartSum').empty();     
+    return sum;
+}
+
+function updateCartSumDisplay(sum, animation){
+    if(sum <= 0 || !sum){
+        $('#cartSum').remove();     
         $('#iconRubNearCart').remove();
         return;
     }
-    $('#cartSum').empty();
-    $('#iconRubNearCart').remove();
-    $('#cartSum').append(sum);
-    $('#shopcart').append('<span class="icon-rub" id="iconRubNearCart"></span>');
+        let cur = Number($('#cartSum').text());
+        $('#cartSum').remove();     
+        $('#iconRubNearCart').remove();
+        $('#shopcart').append(`<span id="cartSum"></span><span class="icon-rub" id="iconRubNearCart"></span>`);
+        if(animation){
+            animateCart(cur, sum);
+        }
+        else{
+            $('#cartSum').append(sum);
+        }
+}
 
-
+function animateCart(cur, next){
+    if(next >= 10000){
+        $('#cartSum').css({
+            'min-width': '3.2em'
+        });
+    }
+    if(cur >=10000 && next <= 10000){
+        $('#cartSum').css({
+            'min-width': '2.5em'
+        });
+    }
+    $('#cartSum')
+            .prop('number', cur)
+            .animateNumber(
+                {
+                number: next,
+                },
+                350
+            );
 }
 
 contentLoad();
+updateCartSumDisplay(getCartSum(), false);
 addHandlersToCartButton();
 
 

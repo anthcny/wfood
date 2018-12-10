@@ -131,13 +131,16 @@
 					navbar = $('.ftco_navbar'),
 					sd = $('.js-scroll-wrap');
 
-			if (st > 150) {
+			if (st >= 120) {
 				if ( !navbar.hasClass('scrolled') ) {
+					let height = navbar.height();
+					$('body').prepend(`<div id="compens" style="height: ${height+15}px"></div>`)	// плавность прокрутки
 					navbar.addClass('scrolled');	
 				}
 			} 
-			if (st < 150) {
+			if (st < 120) {
 				if ( navbar.hasClass('scrolled') ) {
+					$('#compens').remove();
 					navbar.removeClass('scrolled sleep');
 				}
 			} 
