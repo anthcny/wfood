@@ -29,151 +29,42 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-		      <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>WonderFood<br><small style="font-size: 0.5em">+7 (342) 288 33 19</small></a>
-		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-		        <span class="oi oi-menu"></span> Меню
-		      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Главная</a></li>
-	          <li class="nav-item"><a href="menu.html" class="nav-link">Меню</a></li>
-			  <li class="nav-item"><a href="contact.html" class="nav-link">Контакты</a></li>
-			  <li class="nav-item -auto">
-                <li class="nav-item"><a href="cart.html" class="nav-link"><span class="icon-shopping-cart" style="font-size: 1.5em; color: #fac564"></span></a></li>
-	        </ul>
-	      </div>
-		  </div>
-	  </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+                <div class="container">
+                      <a class="navbar-brand" href="index.html"><span class="flaticon-pizza-1 mr-1"></span>WonderFood<br><small style="font-size: 0.5em">+7 (342) 288 33 19</small></a>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="oi oi-menu"></span> Меню
+                      </button>
+                  <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                      <li class="nav-item"><a href="index.html" class="nav-link">Главная</a></li>
+                      <li class="nav-item"><a href="menu.html" class="nav-link">Меню</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Контакты</a></li>
+                                <li class="nav-item active">
+                                    <a href="cart.html" class="nav-link">
+                                            <span id="shopcart" class="goldColor">
+                                                    <span class="icon-shopping-cart" id="cartIcon"></span>
+                                                    <span id="cartSum"></span>
+                                            </span>
+                                    </a>
+                                </li>
+                    </ul>
+                  </div>
+                  </div>
+        </nav>
     <!-- END nav -->
 
     <div class="container">
-        <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
-      <div class="col-md-7 heading-section text-center ftco-animate">
-        <h2 class="mb-4">Корзина</h2>
-        <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-        <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-1.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Italian Pizza</span></h3>
-                        <span class="price containerFlexAlignCenter pricePadding">
-                                <span class="containerFlexAlignCenter">
-                                        <span class="priceNumber goldColor">400</span>
-                                        <span class="icon-rub goldColor"></span>
-                                </span>
-                                <span class="icon-remove removeIcon"></span>
-                        </span>
-                        
-                    </div>
-                    <div class="containerFlexAlignCenter">
-                        <p>A small river named Duden flows by their place and supplies
-                                small river named Duden flows by their place and supplies
-                                small river named Duden flows by their place and supplies
-                        </p>
-                        <span class="price containerFlexAlignCenter countNav">
-                                <span class="icon-minus plusMinusIcon"></span>
-                                <span class="countItems">5</span>
-                                <span class="icon-plus plusMinusIcon"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-2.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Hawaiian Pizza</span></h3>
-                        <span class="price">$29.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-3.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Greek Pizza</span></h3>
-                        <span class="price">$20.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-4.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Bacon Crispy Thins</span></h3>
-                        <span class="price">$20.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
+            <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Корзина</h2>
+            <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+            <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
         </div>
-
-        <div class="col-md-6">
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-5.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Hawaiian Special</span></h3>
-                        <span class="price">$49.91</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-6.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Ultimate Overload</span></h3>
-                        <span class="price">$20.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-7.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Bacon Pizza</span></h3>
-                        <span class="price">$20.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-entry d-flex ftco-animate">
-                <div class="img" style="background-image: url(images/pizza-8.jpg);"></div>
-                <div class="desc pl-3">
-                    <div class="d-flex text align-items-center">
-                        <h3><span>Ham &amp; Pineapple</span></h3>
-                        <span class="price">$20.00</span>
-                    </div>
-                    <div class="d-block">
-                        <p>A small river named Duden flows by their place and supplies</p>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12" id="cartItemsList"></div>
+        </div>
     </div>
 
     
@@ -303,6 +194,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/app.js"></script>
     
   </body>
 </html>

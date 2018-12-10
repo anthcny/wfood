@@ -90,6 +90,7 @@ html {
 .containerFlexAlignCenter{
   display: flex;
   align-items: center;
+  justify-content: space-between
 }
 
 .plusMinusIcon{

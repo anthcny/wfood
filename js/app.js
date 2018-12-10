@@ -108,8 +108,119 @@ function contentLoad(){
         </div>
     `;
     })
-    domEl = $(html);
+    let domEl = $(html);
     $('#v-pills-1 > .row').append(domEl);
+}
+
+function displayCartItems(){
+    let cart = localStorage.getItem('cart');
+    if(!cart){
+        return;
+    }
+    cart = JSON.parse(cart);
+    let html = '';
+    for(const id in cart){
+        const item = searchItemById(id);
+        html += `<div class="pricing-entry d-flex ftco-animate fadeInUp ftco-animated" id="${id}">
+                    <div class="img" style="background-image: url(images/${item.image});"></div>
+                    <div class="desc pl-3">
+                        <div class="d-flex text align-items-center">
+                            <h3><span>${item.name + " x" + cart[id]}</span></h3>
+                            <span class="price containerFlexAlignCenter pricePadding">
+                                    <span class="containerFlexAlignCenter">
+                                            <span class="priceNumber goldColor" price="" data-id="${id}">${item.price * cart[id]}</span>
+                                            <span class="icon-rub goldColor"></span>
+                                    </span>
+                                    <span class="icon-remove removeIcon" data-id="${id}"></span>
+                            </span>
+                            
+                        </div>
+                        <div class="containerFlexAlignCenter">
+                                <p>${item.description.slice(0, 110) + "..."}
+                                </p>
+                                <span class="price containerFlexAlignCenter countNav">
+                                        <span class="icon-minus plusMinusIcon" data-id="${id}"></span>
+                                        <span class="countItems" number="" data-id="${id}">${cart[id]}</span>
+                                        <span class="icon-plus plusMinusIcon" data-id="${id}"></span>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+        `
+    }
+    let domEl = $(html);
+    $('#cartItemsList').append(domEl);
+}
+
+function addHandlersToItems(){
+    $('.icon-remove').bind('click', function(){
+        removeItemById($(this)[0].dataset.id);
+        updateCartSumDisplay(getCartSum(), true);
+    });
+    $('.icon-plus').bind('click', function(){
+        countIncrement($(this)[0].dataset.id);
+        updateCartSumDisplay(getCartSum(), true);
+        updateItemCountDisplay($(this)[0].dataset.id);
+        updateItemSumDisplay($(this)[0].dataset.id);
+    });
+    $('.icon-minus').bind('click', function(){
+        countDicrement($(this)[0].dataset.id);
+        updateCartSumDisplay(getCartSum(), true);
+        updateItemCountDisplay($(this)[0].dataset.id);
+        updateItemSumDisplay($(this)[0].dataset.id);
+    });
+}
+
+function removeItemById(id){
+    let cart = localStorage.cart;
+    $(`#${id}`).remove();
+    if(!cart) return;
+    cart = JSON.parse(cart);
+    delete cart[id];
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function updateItemCountDisplay(id){
+    let cart = localStorage.cart;
+    if(!cart) return;
+    cart = JSON.parse(cart);
+    let count = cart[id];
+    let item = searchItemById(id);
+    $(`#${id} h3 span`).empty().append(item.name + " x" + count);
+    $(`span[number][data-id="${id}"]`).empty().append(count);
+}
+
+function updateItemSumDisplay(id){
+    let cart = localStorage.cart;
+    if(!cart) return;
+    cart = JSON.parse(cart);
+    let count = cart[id];
+    let item = searchItemById(id);
+    $(`span[price][data-id="${id}"]`).empty().append(item.price * count);
+}
+
+function countIncrement(id){
+    let cart = localStorage.cart;
+    if(!cart) return;
+    cart = JSON.parse(cart);
+    cart[id] = ++cart[id];
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function countDicrement(id){
+    let cart = localStorage.cart;
+    if(!cart) return;
+    cart = JSON.parse(cart);
+    cart[id] = --cart[id];
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function searchItemById(id){
+    let values = Object.values(items);
+    for(let i=0; i<values.length; i++){
+        if(values[i][id])
+            return values[i][id];
+    }
 }
 
 function addHandlersToCartButton(){
@@ -222,10 +333,13 @@ function animateCart(cur, next){
                 350
             );
 }
-
+//------------------------- menu
 contentLoad();
 updateCartSumDisplay(getCartSum(), false);
 addHandlersToCartButton();
+//------------------------- cart
+displayCartItems();
+addHandlersToItems();
 
 
 })(jQuery);
