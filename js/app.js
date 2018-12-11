@@ -3,7 +3,10 @@ const items = {
         {
             image: "pizza-1.jpg",
             name: "Итальянская",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            description: `Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+            Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+            Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+            `,
             price: 410
         },
         {
@@ -33,6 +36,30 @@ const items = {
         {
             image: "pizza-3.jpg",
             name: "Мясная",
+            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            price: 550
+        },
+        {
+            image: "pizza-3.jpg",
+            name: "Греческая",
+            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            price: 550
+        },
+        {
+            image: "pizza-3.jpg",
+            name: "Тесак",
+            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            price: 550
+        },
+        {
+            image: "pizza-3.jpg",
+            name: "Острая",
+            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            price: 550
+        },
+        {
+            image: "pizza-3.jpg",
+            name: "Демон",
             description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
             price: 550
         }
@@ -86,16 +113,18 @@ generateId(items);
 
 (function($) {
 
+
+
 function contentLoad(){
     let html = '';
     Object.keys(items.pizza).forEach(key => {
         html += `
         <div class="col-md-3 text-center">
             <div class="menu-wrap">
-                <a href="#" class="menu-img img mb-4" style="background-image: url(images/${items.pizza[key].image});"></a>
+                <span class="menu-img img mb-4" style="background-image: url(images/${items.pizza[key].image});"></span>
                 <div class="text">
-                    <h3><a href="#">${items.pizza[key].name}</a></h3>
-                    <p>${items.pizza[key].description}</p>
+                    <h3><span>${items.pizza[key].name}</span></h3>
+                    <p class="descriptionMenu" tabindex="0">${items.pizza[key].description}</p>
                     <p class="price" style="display: flex">
                         <span style="display: flex; align-items: center; margin: 0 auto;">
                             <span style="margin-right: 0.3em">${items.pizza[key].price}</span>
@@ -112,11 +141,22 @@ function contentLoad(){
     $('#v-pills-1 > .row').append(domEl);
 }
 
-function displayCartItems(){
-    let cart = localStorage.getItem('cart');
-    if(!cart){
+function contentSelect(cart){
+    if(!cart || cart==='{}'){
+        $('[data-id="statusText"]').empty().append('Ваша корзина пуста, вы можете перейти во вкладку "Меню", чтобы наполнить ее вкусными блюдами!');
+        $('#makeOrder').hide();
+        $('.coast').remove();
         return;
     }
+    $('[data-id="statusText"]').empty().append('Ваша корзина полна удовольствий, осталось оформить заказ!');
+    displayOrderForm();
+    $('#makeOrder').show();
+}
+
+function displayCartItems(){
+    let cart = localStorage.getItem('cart');
+    contentSelect(cart);
+    if(!cart || cart==='{}') return;
     cart = JSON.parse(cart);
     let html = '';
     for(const id in cart){
@@ -138,8 +178,9 @@ function displayCartItems(){
                             
                         </div>
                         <div class="containerFlexAlignCenter">
-                                <p>${item.description.slice(0, 110) + "..."}
-                                </p>
+                                <div class="description" tabindex="0">
+                                    <span>${item.description}</span>
+                                </div>
                                 <span class="price containerFlexAlignCenter countNav">
                                         <span class="icon-minus plusMinusIcon" data-id="${id}"></span>
                                         <span class="countItems" number="" data-id="${id}">${cart[id]}</span>
@@ -150,28 +191,134 @@ function displayCartItems(){
                 </div>
         `
     }
+
+    html += `<div class="coast">
+        <h3>Итого:<span class="goldColor" data-id="coast">${' '+getCartSum() + ' руб.'}</span></h3>
+    </div>`
+
     let domEl = $(html);
     $('#cartItemsList').append(domEl);
+}
+
+function formValidation(){
+    let check = true;
+    if($('#userName').val()===''){
+        $('#userName').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#userName').removeAttr('style');
+    }
+    if($('#phone').val()===''){
+        $('#phone').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#phone').removeAttr('style');
+    }
+    if($('#adress').val()===''){
+        $('#adress').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#adress').removeAttr('style');
+    }
+    return check;
+}
+
+function addHandlersToOrderForm(){
+    $('#order').bind('click', function(){
+        console.log(formValidation());
+    });
+}
+
+function displayOrderForm(){
+    let info = localStorage.getItem('info');
+    let html;
+    if(!info || info==='{}'){
+        html = `
+            <div class="col-md-7 ftco-animate fadeInUp ftco-animated">
+                <form action="#" class="contact-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" id="userName" class="form-control" placeholder="Имя">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" id="phone" class="form-control" placeholder="Телефон">
+                        </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="adress" class="form-control" placeholder="Адрес">
+                </div>
+                <div class="form-group">
+                    <textarea name="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="button" id="order" value="З А К А З А Т Ь" class="btn btn-primary py-3 px-5">
+                </div>
+                </form>
+            </div>
+      `
+    }else{
+        info = JSON.parse(info);
+        html = `
+            <div class="col-md-7 ftco-animate fadeInUp ftco-animated">
+                <form action="#" class="contact-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" class="form-control" value="${info.name ? info.name : ''}" placeholder="Имя">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <input type="text" id="phone" class="form-control" value="${info.phone ? info.phone : ''}" placeholder="Телефон">
+                        </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="adress" class="form-control" value="${info.adress ? info.adress : ''}" placeholder="Адрес">
+                </div>
+                <div class="form-group">
+                    <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="З А К А З А Т Ь" class="btn btn-primary py-3 px-5">
+                </div>
+                </form>
+            </div>
+                `       
+    }
+    let domEl = $(html);
+    $('#makeOrder').empty().append(domEl);
+    $('#phone').mask("+7 (999) 999 9999", {placeholder: ""});
+    addHandlersToOrderForm();
 }
 
 function addHandlersToItems(){
     $('.icon-remove').bind('click', function(){
         removeItemById($(this)[0].dataset.id);
         updateCartSumDisplay(getCartSum(), true);
+        updateFinnalyCoast(getCartSum());
     });
     $('.icon-plus').bind('click', function(){
         countIncrement($(this)[0].dataset.id);
         updateCartSumDisplay(getCartSum(), true);
         updateItemCountDisplay($(this)[0].dataset.id);
         updateItemSumDisplay($(this)[0].dataset.id);
+        updateFinallyCoast(getCartSum());
     });
     $('.icon-minus').bind('click', function(){
         countDicrement($(this)[0].dataset.id);
         updateCartSumDisplay(getCartSum(), true);
         updateItemCountDisplay($(this)[0].dataset.id);
         updateItemSumDisplay($(this)[0].dataset.id);
+        updateFinallyCoast(getCartSum());
     });
 }
+
+
 
 function removeItemById(id){
     let cart = localStorage.cart;
@@ -180,6 +327,13 @@ function removeItemById(id){
     cart = JSON.parse(cart);
     delete cart[id];
     localStorage.setItem('cart', JSON.stringify(cart));
+    if(JSON.stringify(cart)==='{}'){
+        displayCartItems();
+    }
+}
+
+function updateFinallyCoast(coast){
+    $(`[data-id="coast"]`).empty().append(' '+coast+ ' руб.');
 }
 
 function updateItemCountDisplay(id){
