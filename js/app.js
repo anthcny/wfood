@@ -201,6 +201,7 @@ function displayCartItems(){
 }
 
 function formValidation(){
+
     let check = true;
     if($('#userName').val()===''){
         $('#userName').css("cssText","border-bottom-color: red !important;");
@@ -223,9 +224,23 @@ function formValidation(){
     return check;
 }
 
+function saveFormInfoLocal(){
+    let info = {};
+    info.name = $('#userName').val();
+    info.phone = $('#phone').val();
+    info.adress = $('#adress').val();
+    $('#userName').val('');
+    $('#phone').val('');
+    $('#adress').val('');
+    info = JSON.stringify(info);
+    localStorage.setItem('info', info);
+}
+
 function addHandlersToOrderForm(){
     $('#order').bind('click', function(){
-        console.log(formValidation());
+        if(formValidation()){
+            saveFormInfoLocal();
+        }
     });
 }
 
@@ -235,7 +250,7 @@ function displayOrderForm(){
     if(!info || info==='{}'){
         html = `
             <div class="col-md-7 ftco-animate fadeInUp ftco-animated">
-                <form action="#" class="contact-form">
+                <div class="contact-form">
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
@@ -255,20 +270,20 @@ function displayOrderForm(){
                     <textarea name="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="button" id="order" value="З А К А З А Т Ь" class="btn btn-primary py-3 px-5">
+                    <button id="order"  class="btn btn-primary py-3 px-5">ЗАКАЗАТЬ</button>
                 </div>
-                </form>
+                </div>
             </div>
       `
     }else{
         info = JSON.parse(info);
         html = `
             <div class="col-md-7 ftco-animate fadeInUp ftco-animated">
-                <form action="#" class="contact-form">
+                <div class="contact-form">
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
-                        <input type="text" class="form-control" value="${info.name ? info.name : ''}" placeholder="Имя">
+                        <input type="text" class="form-control" id="userName" value="${info.name ? info.name : ''}" placeholder="Имя">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -284,7 +299,7 @@ function displayOrderForm(){
                     <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="З А К А З А Т Ь" class="btn btn-primary py-3 px-5">
+                    <button id="order" class="btn btn-primary py-3 px-5">ЗАКАЗАТЬ</button>
                 </div>
                 </form>
             </div>
@@ -300,7 +315,7 @@ function addHandlersToItems(){
     $('.icon-remove').bind('click', function(){
         removeItemById($(this)[0].dataset.id);
         updateCartSumDisplay(getCartSum(), true);
-        updateFinnalyCoast(getCartSum());
+        updateFinallyCoast(getCartSum());
     });
     $('.icon-plus').bind('click', function(){
         countIncrement($(this)[0].dataset.id);
