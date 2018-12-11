@@ -121,13 +121,15 @@ function displayCartItems(){
     let html = '';
     for(const id in cart){
         const item = searchItemById(id);
+        let nameAndCount = item.name;
+        nameAndCount += +cart[id] > 1 ? ' x'+ cart[id] : '';
         html += `<div class="pricing-entry d-flex ftco-animate fadeInUp ftco-animated" id="${id}">
                     <div class="img" style="background-image: url(images/${item.image});"></div>
                     <div class="desc pl-3">
                         <div class="d-flex text align-items-center">
-                            <h3><span>${item.name + " x" + cart[id]}</span></h3>
-                            <span class="price containerFlexAlignCenter pricePadding">
-                                    <span class="containerFlexAlignCenter">
+                            <h3><span>${nameAndCount}</span></h3>
+                            <span class="price containerFlexAlignCenter pricePadding justContentCenter">
+                                    <span class="justContentCenter">
                                             <span class="priceNumber goldColor" price="" data-id="${id}">${item.price * cart[id]}</span>
                                             <span class="icon-rub goldColor"></span>
                                     </span>
@@ -186,7 +188,9 @@ function updateItemCountDisplay(id){
     cart = JSON.parse(cart);
     let count = cart[id];
     let item = searchItemById(id);
-    $(`#${id} h3 span`).empty().append(item.name + " x" + count);
+    let nameAndCount = item.name;
+        nameAndCount += +cart[id] > 1 ? ' x'+ cart[id] : '';
+    $(`#${id} h3 span`).empty().append(nameAndCount);
     $(`span[number][data-id="${id}"]`).empty().append(count);
 }
 
@@ -203,6 +207,7 @@ function countIncrement(id){
     let cart = localStorage.cart;
     if(!cart) return;
     cart = JSON.parse(cart);
+    if(cart[id]>=99) return;
     cart[id] = ++cart[id];
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -211,6 +216,7 @@ function countDicrement(id){
     let cart = localStorage.cart;
     if(!cart) return;
     cart = JSON.parse(cart);
+    if(cart[id] <= 1) return;
     cart[id] = --cart[id];
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -243,7 +249,7 @@ function animateAddToCartBtn(domElBtn, cb){
    domElBtn.fadeToggle(200, function(){
     domElBtn.empty();
     domElBtn.addClass('addToCartClicked');
-    domElBtn.append('Добавлен');
+    domElBtn.append('Готово!');
     domElBtn.fadeToggle(200, function(){
         setTimeout(() => {
             domElBtn.fadeToggle(200, function(){
