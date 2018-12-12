@@ -146,11 +146,14 @@ function contentSelect(cart){
         $('[data-id="statusText"]').empty().append('Ваша корзина пуста, вы можете перейти во вкладку "Меню", чтобы наполнить ее вкусными блюдами!');
         $('#makeOrder').hide();
         $('.coast').remove();
-        return;
+        $('#payMethods').hide();
     }
-    $('[data-id="statusText"]').empty().append('Ваша корзина полна удовольствий, осталось оформить заказ!');
-    displayOrderForm();
-    $('#makeOrder').show();
+    else{
+        $('[data-id="statusText"]').empty().append('Ваша корзина полна удовольствий, осталось оформить заказ!');
+        displayOrderForm();
+        $('#makeOrder').show();
+        $('#payMethods').show();
+    }
 }
 
 function displayCartItems(){
@@ -221,6 +224,14 @@ function formValidation(){
     }else{
         $('#adress').removeAttr('style');
     }
+    if($('#cash')[0].dataset.active === "false" && $('#emoney')[0].dataset.active === "false" ){
+        $('#cash').css("cssText","border-color: red !important;");
+        $('#emoney').css("cssText","border-color: red !important;");
+        check = false;
+    }else{
+        $('#cash').removeAttr('style');
+        $('#emoney').removeAttr('style');
+    }
     return check;
 }
 
@@ -240,7 +251,10 @@ function addHandlersToOrderForm(){
     $('#order').bind('click', function(){
         if(formValidation()){
             saveFormInfoLocal();
+            savePayMethodLocal();
+            sendMessage(createOrderMessage());
         }
+        //sendMessage();
     });
 }
 
@@ -267,10 +281,10 @@ function displayOrderForm(){
                     <input type="text" id="adress" class="form-control" placeholder="Адрес">
                 </div>
                 <div class="form-group">
-                    <textarea name="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
+                    <textarea name="" id="comment" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
                 </div>
-                <div class="form-group">
-                    <button id="order"  class="btn btn-primary py-3 px-5">ЗАКАЗАТЬ</button>
+                <div class="form-group row justify-content-center">
+                    <button id="order"  class="btn payRadio">Заказать</button>
                 </div>
                 </div>
             </div>
@@ -296,10 +310,10 @@ function displayOrderForm(){
                     <input type="text" id="adress" class="form-control" value="${info.adress ? info.adress : ''}" placeholder="Адрес">
                 </div>
                 <div class="form-group">
-                    <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
+                    <textarea name="" id="comment" cols="30" rows="7" class="form-control" placeholder="Комментарий"></textarea>
                 </div>
-                <div class="form-group">
-                    <button id="order" class="btn btn-primary py-3 px-5">ЗАКАЗАТЬ</button>
+                <div class="form-group row justify-content-center">
+                    <button id="order" class="btn payRadio">ЗАКАЗАТЬ</button>
                 </div>
                 </form>
             </div>
@@ -333,7 +347,30 @@ function addHandlersToItems(){
     });
 }
 
+function addHandlerPayMethodsButtons(){
+    $('#cash').bind('click', function(){
+        togglePayMethod($(this));
+        savePayMethodLocal();
+    });
+    $('#emoney').bind('click', function(){
+        togglePayMethod($(this));
+        savePayMethodLocal();
+    });
+}
 
+function togglePayMethod(button){
+    $('#cash')[0].dataset.active = 'false';
+    $('#emoney')[0].dataset.active = 'false';
+    $('#cash').removeClass('payActive');
+    $('#emoney').removeClass('payActive');
+    button.addClass('payActive');
+    button[0].dataset.active = 'true';
+}
+
+function savePayMethodLocal(){
+    let method = $('[data-active="true"]').val();
+    localStorage.setItem('payMethod', method);
+}
 
 function removeItemById(id){
     let cart = localStorage.cart;
@@ -508,6 +545,50 @@ function animateCart(cur, next){
                 350
             );
 }
+
+function createOrderMessage(){
+    let msg = `*** НОВЫЙ ЗАКАЗ *** %0A%0A`;
+    if(localStorage.info === '{}' && !localStorage.info){
+        return 'Ошибочный заказ.';
+    }
+    let info = JSON.parse(localStorage.info),
+        payMethod = localStorage.payMethod;
+    msg += `Имя: ${info.name}%0AТелефон: ${info.phone} %0AАдрес: ${info.adress}%0AСпособ оплаты: ${payMethod}%0A
+${$('#comment').val() === '' ? '' : 'Комментарий: '+$('#comment').val()}%0A%0A`;
+
+    msg += getItemsString();
+    return msg;
+}
+
+function getItemsString(){
+    if(localStorage.cart === '{}' && !localStorage.cart){
+        return 'Пустая корзина'
+    }
+    let cart = JSON.parse(localStorage.cart);
+    let str = '';
+    for(const id in cart){
+        let item = searchItemById(id);
+        str += `- ${item.name} ${cart[id]} шт.  = ${item.price * cart[id]} р.%0A`;
+    }
+    str += `%0AСумма заказа: ${getCartSum()} руб.`;
+    return str;
+}
+
+function sendMessage(mes){
+    let id = +new Date() - 1544618950200;
+        token = "78a563a763ce7932ca9cba7e77915bfad464e7a2a974c1b3b0c687c62b8eba87a195c7cba1715f790468b";
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
+    
+    jQuery.ajax({
+        url : req,
+        type : "GET",
+        dataType : "jsonp",
+        success : function(msg){
+        
+        console.log(msg);
+        }
+    });
+}
 //------------------------- menu
 contentLoad();
 updateCartSumDisplay(getCartSum(), false);
@@ -515,6 +596,10 @@ addHandlersToCartButton();
 //------------------------- cart
 displayCartItems();
 addHandlersToItems();
+addHandlerPayMethodsButtons();
 
 
 })(jQuery);
+
+//78a563a763ce7932ca9cba7e77915bfad464e7a2a974c1b3b0c687c62b8eba87a195c7cba1715f790468b
+

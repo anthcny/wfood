@@ -59,6 +59,26 @@ html {
   border-bottom-color: red !important;
 }
 
+.payRadio{
+  font-size: 1em !important;
+  padding: 1em;
+  border: 1px solid #fac564 !important;
+  margin: 0.5em 2em;
+  min-width: 13em;
+  background-color: inherit;
+  color: #fac564 ;
+}
+
+.payRadio:hover{
+  background-color: #fac564;
+  color: black;
+}
+
+.payActive{
+  background-color: #fac564 !important;
+  color: black !important;
+}
+
 .descriptionMenu:focus{
   outline: none;
   overflow: scroll;
