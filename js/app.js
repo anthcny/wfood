@@ -109,11 +109,25 @@ function generateId(items){
 
 generateId(items);
 
-
+let countAjaxTry = 0;
 
 (function($) {
 
-
+    function addHandlersToOrderForm(){
+        let clickFuncActive = false;
+        $('#order').bind('click', function(){
+            if(clickFuncActive) return;
+            let countAjaxTry = 0;
+            if(formValidation()){
+                clickFuncActive = true;
+                saveFormInfoLocal();
+                savePayMethodLocal();
+                sendMessage(createOrderMessage(), ()=>{clickFuncActive = false});
+                animateOrderSend('Отправка...');
+            }
+            //sendMessage();
+        });
+    }
 
 function contentLoad(){
     let html = '';
@@ -240,22 +254,11 @@ function saveFormInfoLocal(){
     info.name = $('#userName').val();
     info.phone = $('#phone').val();
     info.adress = $('#adress').val();
-    $('#userName').val('');
-    $('#phone').val('');
-    $('#adress').val('');
+    //$('#userName').val('');
+    //$('#phone').val('');
+    //$('#adress').val('');
     info = JSON.stringify(info);
     localStorage.setItem('info', info);
-}
-
-function addHandlersToOrderForm(){
-    $('#order').bind('click', function(){
-        if(formValidation()){
-            saveFormInfoLocal();
-            savePayMethodLocal();
-            sendMessage(createOrderMessage());
-        }
-        //sendMessage();
-    });
 }
 
 function displayOrderForm(){
@@ -546,6 +549,20 @@ function animateCart(cur, next){
             );
 }
 
+function animateOrderSend(text, changeColor){
+    let domElBtn = $('#order');
+    domElBtn.fadeToggle(500, function(){
+     domElBtn.empty();
+     if(changeColor){
+        domElBtn.addClass('orderClick');
+     }else{
+        domElBtn.removeClass('orderClick');
+     }
+     domElBtn.append(text);
+     domElBtn.fadeToggle(500);
+     });
+ }
+
 function createOrderMessage(){
     let msg = `*** НОВЫЙ ЗАКАЗ *** %0A%0A`;
     if(localStorage.info === '{}' && !localStorage.info){
@@ -574,21 +591,59 @@ function getItemsString(){
     return str;
 }
 
-function sendMessage(mes){
+function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
         token = "78a563a763ce7932ca9cba7e77915bfad464e7a2a974c1b3b0c687c62b8eba87a195c7cba1715f790468b";
     let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
-    
     jQuery.ajax({
         url : req,
         type : "GET",
         dataType : "jsonp",
         success : function(msg){
-        
-        console.log(msg);
+            if(msg.error){
+                failedOrder(cb);
+            }else{
+                orderSubmited();
+                clearLocalData();
+                cb();
+            }
+        },
+        error: function(){
+            if(countAjaxTry>2){
+                failedOrder(cb);
+                countAjaxTry = 0;
+            }else{
+                countAjaxTry++;
+                setTimeout(function(){
+                    console.log(mes);
+                    sendMessage(mes);
+                }, 2000);
+            }
         }
     });
 }
+
+function orderSubmited(){
+    $('#mainHeader').empty().append('Ваш заказ готовится!');
+    $('#payMethods').hide();
+    $('#cartItemsList').hide();
+    $('#makeOrder').hide();
+    $('[data-id="statusText"]').empty().append('В течение нескольких минут мы с вами свяжемся для подтверждения заказа. Ждем вас снова!');
+    updateCartSumDisplay();
+    let body = $("html, body");
+    body.stop().animate({scrollTop:0}, 500, 'swing');
+}
+
+function clearLocalData(){
+    localStorage.removeItem('cart');
+    localStorage.removeItem('payMethod');
+}
+
+function failedOrder(cb){
+    animateOrderSend('Ошбика. Попробуйте позднее.', true);
+    setTimeout(() => {animateOrderSend('Заказать', false); cb();}, 5000);
+}
+
 //------------------------- menu
 contentLoad();
 updateCartSumDisplay(getCartSum(), false);

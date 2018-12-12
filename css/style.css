@@ -51,7 +51,7 @@ html {
   /* ---------------- */
 
 .descriptionMenu{
-  max-height: 6.5em;
+  height: 5.6em;
   overflow: hidden;
 }
 
@@ -194,9 +194,15 @@ html {
 }
 
 .addToCartClicked{
-  background-color: rgb(51, 70, 2) !important;
+  background-color: rgba(154, 212, 6, 0.2) !important;
+  color: white !important;
+  min-width: 6.7em !important;
 }
 
+.orderClick{
+  background-color: rgba(230, 18, 3, 0.2) !important;
+  min-width: 8em !important;
+}
 
 #cartSum{
   margin-right: 0.2em;
