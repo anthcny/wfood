@@ -113,21 +113,28 @@ let countAjaxTry = 0;
 
 (function($) {
 
-    function addHandlersToOrderForm(){
-        let clickFuncActive = false;
-        $('#order').bind('click', function(){
-            if(clickFuncActive) return;
-            //let countAjaxTry = 0;
-            if(formValidation(()=>{clickFuncActive = true},()=>{clickFuncActive = false})){
-                //clickFuncActive = true;
-                saveFormInfoLocal();
-                savePayMethodLocal();
-                sendMessage(createOrderMessage(), ()=>{clickFuncActive = false});
-                animateOrderSend('Отправка...');
-            }
-            //sendMessage();
-        });
+function addHandlersToOrderForm(){
+    let clickFuncActive = false;
+    $('#order').bind('click', function(){
+        if(clickFuncActive) return;
+        if(formValidation(()=>{clickFuncActive = true},()=>{clickFuncActive = false})){
+            if(!checkHours(()=>{clickFuncActive = false})) return;
+            saveFormInfoLocal();
+            savePayMethodLocal();
+            sendMessage(createOrderMessage(), ()=>{clickFuncActive = false});
+            animateOrderSend('Отправка...');
+        }
+    });
+}
+
+function checkHours(cb){
+    let hours = (new Date).getUTCHours();
+    if(hours < 5 || hours > 18){
+        validationMessage('Мы закрыты, попробуйте позже', cb);
+        return false;
     }
+    return true;
+}
 
 function contentLoad(){
     let html = '';
