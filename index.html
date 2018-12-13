@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
-		<link rel="shortcut icon" href="imgs/wonderlogo.jpg" type="image/x-icon">
+		<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
@@ -66,7 +66,7 @@
             	<span class="subheading">Itailan</span>
               <h1 class="mb-4">Итальянская</h1>
               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Заказать</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Меню</a></p>
+              <p><span data-id="2" class="btn btn-primary p-3 px-xl-4 py-xl-3 cartButton">Заказать</span> <a href="menu.html" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Меню</a></p>
             </div>
             <div class="col-md-6 ftco-animate">
             	<img src="images/bg_1.png" class="img-fluid" alt="">
@@ -85,7 +85,7 @@
             	<span class="subheading">Margarita</span>
               <h1 class="mb-4">Маграрита</h1>
               <p class="mb-4 mb-md-5">Попробуй вкуснейшую пиццу на черном тесте!</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Заказать</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Меню</a></p>
+              <p><span data-id="1" class="btn btn-primary p-3 px-xl-4 py-xl-3 cartButton">Заказать</span> <a href="menu.html" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Меню</a></p>
             </div>
             <div class="col-md-6 ftco-animate">
             	<img src="images/bg_2.png" class="img-fluid" alt="">
@@ -102,9 +102,9 @@
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<span class="subheading">Welcome</span>
-              <h1 class="mb-4">We cooked your desired Pizza Recipe</h1>
-              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+              <h1 class="mb-4">Добро пожаловать в наш магазин!</h1>
+              <p class="mb-4 mb-md-5">Выбирайте вкуснейшие блюда и напитки, тут еще какой-то текст.</p>
+              <p><a href="menu.html" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Перейти к меню</a></p>
             </div>
 
           </div>
@@ -225,19 +225,19 @@
 	    			<form action="#" class="appointment-form">
 	    				<div class="d-md-flex">
 		    				<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="Имя">
+		    					<input type="text" id="userName" class="form-control" placeholder="Имя">
 		    				</div>
 	    				</div>
 	    				<div class="d-me-flex">
 	    					<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="Фамилия">
+		    					<input type="text" id="msgHead" class="form-control" placeholder="Тема">
 		    				</div>
 	    				</div>
 	    				<div class="form-group">
-	              <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Сообщение"></textarea>
+	              <textarea name=""  id="msgBody" cols="30" rows="3" class="form-control" placeholder="Сообщение"></textarea>
 	            </div>
 	            <div class="form-group">
-								<input type="submit" value="Отправить" class="btn btn-primary py-3 px-4">
+								<input type="button" id="sendmes" value="Отправить" class="btn btn-primary py-3 px-4">
 	            </div>
 	    			</form>
 	    		</div>    			
@@ -314,9 +314,8 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/app.js"></script>
     
   </body>
 </html>

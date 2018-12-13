@@ -117,9 +117,9 @@ let countAjaxTry = 0;
         let clickFuncActive = false;
         $('#order').bind('click', function(){
             if(clickFuncActive) return;
-            let countAjaxTry = 0;
-            if(formValidation()){
-                clickFuncActive = true;
+            //let countAjaxTry = 0;
+            if(formValidation(()=>{clickFuncActive = true},()=>{clickFuncActive = false})){
+                //clickFuncActive = true;
                 saveFormInfoLocal();
                 savePayMethodLocal();
                 sendMessage(createOrderMessage(), ()=>{clickFuncActive = false});
@@ -217,23 +217,28 @@ function displayCartItems(){
     $('#cartItemsList').append(domEl);
 }
 
-function formValidation(){
-
-    let check = true;
+function formValidation(cb1, cb){
+    cb1();
+    let check = true,
+        fields = false,
+        pay = false;
     if($('#userName').val()===''){
         $('#userName').css("cssText","border-bottom-color: red !important;");
+        fields = true;
         check = false;
     }else{
         $('#userName').removeAttr('style');
     }
     if($('#phone').val()===''){
         $('#phone').css("cssText","border-bottom-color: red !important;");
+        fields = true;
         check = false;
     }else{
         $('#phone').removeAttr('style');
     }
     if($('#adress').val()===''){
         $('#adress').css("cssText","border-bottom-color: red !important;");
+        fields = true;
         check = false;
     }else{
         $('#adress').removeAttr('style');
@@ -241,12 +246,24 @@ function formValidation(){
     if($('#cash')[0].dataset.active === "false" && $('#emoney')[0].dataset.active === "false" ){
         $('#cash').css("cssText","border-color: red !important;");
         $('#emoney').css("cssText","border-color: red !important;");
+        pay = true;
         check = false;
     }else{
         $('#cash').removeAttr('style');
         $('#emoney').removeAttr('style');
     }
+    if((pay && fields) || fields){
+        validationMessage('Заполните поля',cb);
+    }else
+    if(pay){
+        validationMessage('Выберите способ оплаты',cb);
+    }
     return check;
+}
+
+function validationMessage(text, cb){
+    animateOrderSend(text, true);
+    setTimeout(() => {animateOrderSend('Заказать', false); cb();}, 2000);
 }
 
 function saveFormInfoLocal(){
@@ -593,7 +610,7 @@ function getItemsString(){
 
 function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
-        token = "78a563a763ce7932ca9cba7e77915bfad464e7a2a974c1b3b0c687c62b8eba87a195c7cba1715f790468b";
+        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
     let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
     jQuery.ajax({
         url : req,
@@ -602,6 +619,7 @@ function sendMessage(mes, cb){
         success : function(msg){
             if(msg.error){
                 failedOrder(cb);
+                console.log(msg.error);
             }else{
                 orderSubmited();
                 clearLocalData();
@@ -615,8 +633,7 @@ function sendMessage(mes, cb){
             }else{
                 countAjaxTry++;
                 setTimeout(function(){
-                    console.log(mes);
-                    sendMessage(mes);
+                    sendMessage(mes, cb);
                 }, 2000);
             }
         }
@@ -643,6 +660,117 @@ function failedOrder(cb){
     animateOrderSend('Ошбика. Попробуйте позднее.', true);
     setTimeout(() => {animateOrderSend('Заказать', false); cb();}, 5000);
 }
+
+
+//--------------------- message send (not order)
+
+function sendSimpleMessage(mes, cb){
+    let id = +new Date() - 1544618950200;
+        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
+    jQuery.ajax({
+        url : req,
+        type : "GET",
+        dataType : "jsonp",
+        success : function(msg){
+            if(msg.error){
+                failedMessage(cb);
+                console.log(msg.error);
+            }else{
+                clearMsgForm();
+                succesMessage(cb);
+            }
+        },
+        error: function(){
+            if(countAjaxTry>2){
+                failedMessage(cb);
+                countAjaxTry = 0;
+            }else{
+                countAjaxTry++;
+                setTimeout(function(){
+                    sendSimpleMessage(mes, cb);
+                }, 2000);
+            }
+        }
+    });
+}
+
+function sendMsgFormValidation(){
+    let check = true;
+    if($('#userName').val()===''){
+        $('#userName').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#userName').removeAttr('style');
+    }
+    if($('#mail').val()===''){
+        $('#mail').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#mail').removeAttr('style');
+    }
+    if($('#msgBody').val()===''){
+        $('#msgBody').css("cssText","border-bottom-color: red !important;");
+        check = false;
+    }else{
+        $('#msgBody').removeAttr('style');
+    }
+    return check;
+}
+
+function clearMsgForm(){
+    $('#userName').val('');
+    $('#mail').val('');
+    $('#msgHead').val('');
+    $('#msgBody').val('');
+}
+
+function animateMsgSend(text, changeColor){
+    let domElBtn = $('#sendmes');
+    domElBtn.fadeToggle(500, function(){
+     domElBtn.val('');
+     if(changeColor){
+        domElBtn.addClass('orderClick');
+     }else{
+        domElBtn.removeClass('orderClick');
+     }
+     domElBtn.val(text);
+     domElBtn.fadeToggle(500);
+     });
+ }
+
+function failedMessage(cb){
+    animateMsgSend('Ошбика. Попробуйте позднее.', true);
+    setTimeout(() => {animateMsgSend('Отправить', false); cb();}, 5000);
+}
+
+function succesMessage(cb){
+    animateMsgSend('Сообщение отправлено!', false);
+    setTimeout(() => {animateMsgSend('Отправить', false); cb();}, 5000);
+}
+
+function createSendMsg(){
+    let msg ='Новое сообщение от '+ $('#userName').val() +'%0A';
+        msg += `${$('#mail').val()==='' || $('#mail').length <= 0 ? '' : 'Email: ' + $('#mail').val()+ '%0A'}%0A`;
+        msg += `${$('#msgHead').val()==='' ? '' : 'Тема: ' + $('#msgHead').val()+ '%0A'}%0A`;
+        msg += 'Сообщение: %0A'+$('#msgBody').val();
+    return msg;
+}
+
+function addHandlerMsgSendButton(){
+    let clickFuncActive = false;
+    $('#sendmes').bind('click', function(){
+        if(clickFuncActive) return;
+        if(sendMsgFormValidation()){
+            clickFuncActive = true;
+            sendSimpleMessage(createSendMsg(),()=>{clickFuncActive = false});
+        }
+    });
+}
+
+//---------------- contact & main page
+
+addHandlerMsgSendButton();
 
 //------------------------- menu
 contentLoad();
