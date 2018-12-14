@@ -618,7 +618,7 @@ function getItemsString(){
 function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
         token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
-    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&chat_id=AJQ1dyx6FwvoIlshLu4FzBeZ&random_id=${id}&message=${mes}`;
     jQuery.ajax({
         url : req,
         type : "GET",
@@ -674,7 +674,7 @@ function failedOrder(cb){
 function sendSimpleMessage(mes, cb){
     let id = +new Date() - 1544618950200;
         token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
-    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&domain=anton_vostroknutov&random_id=${id}&message=${mes}`;
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&chat_id=AJQ1dyx6FwvoIlshLu4FzBeZ&random_id=${id}&message=${mes}`;
     jQuery.ajax({
         url : req,
         type : "GET",
