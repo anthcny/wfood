@@ -130,7 +130,7 @@ function addHandlersToOrderForm(){
 function checkHours(cb){
     let hours = (new Date).getUTCHours();
     if(hours < 5 || hours > 18){
-        validationMessage('Мы закрыты, попробуйте позже', cb);
+        validationMessage('Мы закрыты до 10.00', cb);
         return false;
     }
     return true;
@@ -615,6 +615,34 @@ function getItemsString(){
     return str;
 }
 
+function sendReport(mes){
+    mes += `%0AКомиссия: ${getCartSum()/10} руб.`;
+    let id = +new Date() - 1544618950200;
+        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&user_id=125218674&random_id=${id}&message=${mes}`;
+
+    jQuery.ajax({
+        url : req,
+        type : "GET",
+        dataType : "jsonp",
+        success : function(msg){
+            if(msg.error){
+                console.log(msg.error);
+            }
+        },
+        error: function(){
+            if(countAjaxTry>2){
+                countAjaxTry = 0;
+            }else{
+                countAjaxTry++;
+                setTimeout(function(){
+                    sendMessage(mes);
+                }, 2000);
+            }
+        }
+    });
+}
+
 function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
         token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
@@ -628,6 +656,7 @@ function sendMessage(mes, cb){
                 failedOrder(cb);
                 console.log(msg.error);
             }else{
+                sendReport(mes);
                 orderSubmited();
                 clearLocalData();
                 cb();
