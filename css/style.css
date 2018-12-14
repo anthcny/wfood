@@ -217,6 +217,10 @@ html {
   color: inherit;
 }
 
+#cartItemList{
+  padding-right: 25px !important;
+}
+
 #cartIcon{
   font-size: 1.5em;
   color: inherit;
