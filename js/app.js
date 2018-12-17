@@ -164,7 +164,8 @@ function contentLoad(){
 
 function contentSelect(cart){
     if(!cart || cart==='{}'){
-        $('[data-id="statusText"]').empty().append('Ваша корзина пуста, вы можете перейти во вкладку "Меню", чтобы наполнить ее вкусными блюдами!');
+        $('[data-id="statusText"]').empty().append(`Ваша корзина пуста, вы можете перейти в "Меню", чтобы наполнить ее вкусными блюдами!
+        <input type="button" onclick="window.location='menu.html';" value="Перейти к меню" class="btn payRadio" style="margin-top: 3em;">`);
         $('#makeOrder').hide();
         $('.coast').remove();
         $('#payMethods').hide();
