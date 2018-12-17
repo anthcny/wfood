@@ -1,5 +1,5 @@
  AOS.init({
- 	duration: 8000,
+ 	duration: 5000,
  	easing: 'slide'
  });
 
@@ -46,10 +46,13 @@
    $.Scrollax();
 
 	var carousel = function() {
-		$('.home-slider').owlCarousel({
+		let home = $('.home-slider');
+		home.owlCarousel({
 	    loop:true,
 	    autoplay: true,
-	    margin:0,
+		margin:0,
+		callbacks: true,
+		autoplayTimeout: 7000,
 	    animateOut: 'fadeOut',
 	    animateIn: 'fadeIn',
 	    nav:false,
@@ -96,7 +99,15 @@
 			}
 		});
 
+		home.on('focus',function(){
+			home.trigger('stop.owl.autoplay');
+		})
+		home.on('blur',function(){
+			home.trigger('play.owl.autoplay');
+		})
+
 	};
+	
 	carousel();
 
 	$('nav .dropdown').hover(function(){
@@ -221,7 +232,7 @@
 						},  k * 50, 'easeInOutExpo' );
 					});
 					
-				}, 100);
+				}, 1000);
 				
 			}
 
