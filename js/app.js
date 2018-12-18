@@ -1,7 +1,7 @@
 const items = {
     pizza: [
         {
-            image: "pizza-1.jpg",
+            image: "rollcrab.jpg",
             name: "Итальянская",
             description: `Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
             Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
@@ -10,13 +10,13 @@ const items = {
             price: 410
         },
         {
-            image: "pizza-2.jpg",
+            image: "panaz/funchozasKuricei.jpg",
             name: "Черная",
             description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
             price: 390
         },
         {
-            image: "pizza-3.jpg",
+            image: "filadelfia.jpg",
             name: "BBQ",
             description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
             price: 420
