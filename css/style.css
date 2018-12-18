@@ -52,13 +52,11 @@ html {
 
   /* ---------------- */
 
-/* .logo{
-  margin-top: -2em;
-} */
 
 .colflex{
-  display: flex;
-  flex-direction: column
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start !important;
 }
 
 .descriptionMenu{
