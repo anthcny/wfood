@@ -52,6 +52,14 @@ html {
 
   /* ---------------- */
 
+.logo{
+  margin-top: -2em;
+}
+
+.colflex{
+  display: flex;
+  flex-direction: column
+}
 
 .descriptionMenu{
   height: 5.6em;
@@ -3502,6 +3510,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
+  outline: none !important;
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem; }
