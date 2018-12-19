@@ -52,6 +52,36 @@ html {
 
   /* ---------------- */
 
+.marginBtm{
+  margin-bottom: 1em;
+  align-self: baseline;
+}  
+
+.marginLft{
+  margin-left: 0.3em;
+}
+
+.alignEnd{
+  align-self: end;
+}
+
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}
+
+.footLine{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  flex-basis: fit-content;
+  color: white !important;
+}
+
+.footLine > ul{
+  margin-bottom: 0 ;
+}
+
 .tabMenu{
   min-width: 10em;
   text-align: center;
@@ -8408,7 +8438,8 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  padding: 7em 0;
+  padding-top: 3em;
+  padding-bottom: 1em;
   background: #101315; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
