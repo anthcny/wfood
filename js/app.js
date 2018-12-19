@@ -77,19 +77,19 @@ const items = {
             price: 175
         },
         {
-            image: "rolls/RollSogurcom.jpg",
+            image: "rolls/RollSogurcom.JPG",
             name: "Ролл с огурцом",
             description: "120 г.<br> Огурец, рис",
             price: 60
         },
         {
-            image: "rolls/rollSUgrem.jpg",
+            image: "rolls/rollSUgrem.JPG",
             name: "Ролл с угрем",
             description: "240 г.<br> Угорь, рис, унаги соус",
             price: 280
         },
         {
-            image: "rolls/tokio.jpg",
+            image: "rolls/tokio.JPG",
             name: "Токио",
             description: "240 г.<br>Тунец, огурец, сыр сливочный, рис",
             price: 240
@@ -107,7 +107,7 @@ const items = {
             price: 240
         },
         {
-            image: "rolls/filadelfiasTuncom.jpg",
+            image: "rolls/filadelfiasTuncom.JPG",
             name: "Филадельфия с тунцом",
             description: "240 г.<br>Тунец, сыр сливочный, рис",
             price: 240
@@ -119,19 +119,19 @@ const items = {
             price: 280
         },
         {
-            image: "rolls/filadelfia.jpg",
+            image: "rolls/filadelfia.JPG",
             name: "Филадельфия",
             description: "240 г.<br>Сыр сливочный, авокадо, лосось, икра масаго, рис",
             price: 240
         },
         {
-            image: "rolls/Fudziyama.jpg",
+            image: "rolls/Fudziyama.JPG",
             name: "Фудзияма",
             description: "240 грамм<br>Сыр сливочный, лосось капченый, рис, соус Виск",
             price: 280
         },
         {
-            image: "rolls/Cezar.jpg",
+            image: "rolls/Cezar.JPG",
             name: "Цезарь",
             description: "180 грамм<br>Огурец, помидоры, болгарский перец, авокадо",
             price: 210
@@ -147,25 +147,25 @@ const items = {
 
     sets: [
         {
-            image: "sets/bigset.jpg",
+            image: "sets/bigset.JPG",
             name: "Биг сэт",
             description: `Ролл с угрем, Филадельфия с лососем, Филадельфия, Бонита, Бангкок, Запечённый с лососем, Запечённый с курицей `,
             price: 990
         },
         {
-            image: "sets/megaset.jpg",
+            image: "sets/megaset.JPG",
             name: "МЕГА сэт",
             description: `Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
             price: 1200
         },
         {
-            image: "sets/classicset.jpg",
+            image: "sets/classicset.JPG",
             name: "Классик сэт",
             description: `Цезарь, Филадельфия с лососем, Филадельфия, Ролл с угрем, Ролл с огурцом`,
             price: 510
         },
         {
-            image: "sets/Wonder.jpg",
+            image: "sets/Wonder.JPG",
             name: "Wonder сэт",
             description: "Филадельфия с лососем, Калифорния, Ролл с огурцом, Ролл с лососем",
             price: 380
