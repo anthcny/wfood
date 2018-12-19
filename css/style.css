@@ -52,6 +52,14 @@ html {
 
   /* ---------------- */
 
+.tabMenu{
+  min-width: 10em;
+  text-align: center;
+}
+
+.menuCenter{
+  justify-content: center;
+}
 
 .colflex{
   display: flex !important;
@@ -60,7 +68,7 @@ html {
 }
 
 .descriptionMenu{
-  height: 5.6em;
+  height: 5em;
   overflow: hidden;
 }
 

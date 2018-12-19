@@ -1,98 +1,196 @@
 const items = {
     pizza: [
         {
-            image: "rollcrab.jpg",
-            name: "Итальянская",
-            description: `Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
-            Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
-            Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
-            `,
-            price: 410
+            image: "pizza/margarita.jpg",
+            name: "Маргарита",
+            description: `Соус мутти, томаты, сыр`,
+            price: 270
         },
         {
-            image: "panaz/funchozasKuricei.jpg",
-            name: "Черная",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 390
+            image: "pizza/vegetarianskaya.jpg",
+            name: "Вегетарианская",
+            description: 'Соус мутти, болгарский перец, шампиньоны, помидоры, красный лук, оливки, болгарский перец, сыр',
+            price: 330
         },
         {
-            image: "filadelfia.jpg",
-            name: "BBQ",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            image: "pizza/domashnaya.jpg",
+            name: "Домашняя",
+            description: 'Соус мутти, болгарский перец, бекон, шампиньоны, помидоры, корнишоны, оливки',
             price: 420
         },
         {
-            image: "pizza-1.jpg",
-            name: "Веганская",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 310
+            image: "pizza/myasnaya.jpg",
+            name: "Мясная",
+            description: 'Соус мутти, курицца, ветчна, пепперони, бекон, охот.колбаски, оливки, сыр',
+            price: 490
         },
         {
-            image: "pizza-2.jpg",
+            image: "pizza/Skrevetkami.jpg",
+            name: "С креветками",
+            description: 'Соус мутти, креветки, сыр',
+            price: 510
+        },
+        {
+            image: "pizza/BBQ.jpg",
+            name: "BBQ",
+            description: 'Соус мутти, соус BBQ, куринная грудка, ананас, сыр',
+            price: 460
+        },
+        {
+            image: "pizza/Assorti.jpg",
             name: "Ассорти",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
+            description: 'Соус мутти, корнишонны, шампиньоны, ветчина, бекон, оливки, сыр',
             price: 440
         },
-        {
-            image: "pizza-3.jpg",
-            name: "Мясная",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 550
-        },
-        {
-            image: "pizza-3.jpg",
-            name: "Греческая",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 550
-        },
-        {
-            image: "pizza-3.jpg",
-            name: "Тесак",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 550
-        },
-        {
-            image: "pizza-3.jpg",
-            name: "Острая",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 550
-        },
-        {
-            image: "pizza-3.jpg",
-            name: "Демон",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 550
-        }
+        
     ],
 
     rolls: [
         {
-            image: "burger-1.jpg",
-            name: "Ролл1",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 490
+            image: "rolls/bangcoc.jpg",
+            name: "Бангкок",
+            description: "240 г.<br>Лосось, сыр сливочный, авокадо, семя кунжутное, рис",
+            price: 260
         },
         {
-            image: "burger-2.jpg",
-            name: "Ролл2",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 440
+            image: "rolls/bonita.jpg",
+            name: "Бонито",
+            description: "240 г.<br>Лосось терьяки, огурец, сыр сливочный, стружка тунца, рис",
+            price: 210
+        },
+        {
+            image: "rolls/california.jpg",
+            name: "Калифорния",
+            description: "240 г.<br>Лосось, огурец, авокадо, икра масаго, рис",
+            price: 230
+        },
+        {
+            image: "rolls/newyork.jpg",
+            name: "Нью Йорк",
+            description: "240 г.<br>Лосось, огурец , рис",
+            price: 220
+        },
+        {
+            image: "rolls/rollsKrabKremom.jpg",
+            name: "Ролл с краб-кремом",
+            description: "180 г.<br>Краб-крем, рис",
+            price: 175
+        },
+        {
+            image: "rolls/RollSogurcom.jpg",
+            name: "Ролл с огурцом",
+            description: "120 г.<br> Огурец, рис",
+            price: 60
+        },
+        {
+            image: "rolls/rollSUgrem.jpg",
+            name: "Ролл с угрем",
+            description: "240 г.<br> Угорь, рис, унаги соус",
+            price: 280
+        },
+        {
+            image: "rolls/tokio.jpg",
+            name: "Токио",
+            description: "240 г.<br>Тунец, огурец, сыр сливочный, рис",
+            price: 240
+        },
+        {
+            image: "rolls/treugolVAssort.jpg",
+            name: "Треугольный",
+            description: "240 г.<br>Огурец, сыр сливочный, лосось, семя кунжутное",
+            price: 230
+        },
+        {
+            image: "rolls/filadelfiasLososem.jpg",
+            name: "Филадельфия с лососем",
+            description: "240 г.<br>Лосось, сыр сливочный, рис",
+            price: 240
+        },
+        {
+            image: "rolls/filadelfiasTuncom.jpg",
+            name: "Филадельфия с тунцом",
+            description: "240 г.<br>Тунец, сыр сливочный, рис",
+            price: 240
+        },
+        {
+            image: "rolls/filadelfiaSUgrem.jpg",
+            name: "Филадельфия с угрем",
+            description: "240 г.<br>Угорь, сыр сливочный, рис",
+            price: 280
+        },
+        {
+            image: "rolls/filadelfia.jpg",
+            name: "Филадельфия",
+            description: "240 г.<br>Сыр сливочный, авокадо, лосось, икра масаго, рис",
+            price: 240
+        },
+        {
+            image: "rolls/Fudziyama.jpg",
+            name: "Фудзияма",
+            description: "240 грамм<br>Сыр сливочный, лосось капченый, рис, соус Виск",
+            price: 280
+        },
+        {
+            image: "rolls/Cezar.jpg",
+            name: "Цезарь",
+            description: "180 грамм<br>Огурец, помидоры, болгарский перец, авокадо",
+            price: 210
+        },
+        {
+            image: "rolls/goryachiVAssort.jpg",
+            name: "Запеченный с лососем",
+            description: "280 грамм<br>Сыр сливочный, лосось, панировка",
+            price: 280
+        }
+        
+    ],
+
+    sets: [
+        {
+            image: "sets/bigset.jpg",
+            name: "Биг-сэт",
+            description: `Ролл с угрем, Филадельфия с лососем, Филадельфия, Бонита, Бангкок, Запечённый с лососем, Запечённый с курицей `,
+            price: 990
+        },
+        {
+            image: "sets/megaset.jpg",
+            name: "МЕГА сэт",
+            description: `Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
+            price: 1200
+        },
+        {
+            image: "sets/classicset.jpg",
+            name: "Классик",
+            description: `Цезарь, Филадельфия с лососем, Филадельфия, Ролл с угрем, Ролл с огурцом`,
+            price: 510
+        },
+        {
+            image: "sets/Wonder.jpg",
+            name: "Wonder сэт",
+            description: "Филадельфия с лососем, Калифорния, Ролл с огурцом, Ролл с лососем",
+            price: 380
         },
     ],
 
-    drinks: [
+    panaz: [
         {
-            image: "drink-1.jpg",
-            name: "Компот",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 130
+            image: "panaz/chesnochniRisSKuricei.jpg",
+            name: "Рис с курицей",
+            description: "Болгарский перец, цукини, морковь, красный лук, чеснок, курица",
+            price: 210
         },
         {
-            image: "drink-2.jpg",
-            name: "Содовая",
-            description: "Состав: Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.",
-            price: 150
+            image: "panaz/sobaskuricei.jpg",
+            name: "Соба с курицей",
+            description: "Болгарский перец, цукини, красный лук, грибы, курица",
+            price: 190
         },
+        {
+            image: "panaz/funchozasKuricei.jpg",
+            name: "Фунчеза с курицей",
+            description: "Болгарский перец, цукини, красный лук, грибы, курица",
+            price: 210
+        }
     ]
 }
 
@@ -137,29 +235,41 @@ function checkHours(cb){
 }
 
 function contentLoad(){
-    let html = '';
-    Object.keys(items.pizza).forEach(key => {
-        html += `
-        <div class="col-md-3 text-center">
-            <div class="menu-wrap">
-                <span class="menu-img img mb-4" style="background-image: url(images/${items.pizza[key].image});"></span>
-                <div class="text">
-                    <h3><span>${items.pizza[key].name}</span></h3>
-                    <p class="descriptionMenu" tabindex="0">${items.pizza[key].description}</p>
-                    <p class="price" style="display: flex">
-                        <span style="display: flex; align-items: center; margin: 0 auto;">
-                            <span style="margin-right: 0.3em">${items.pizza[key].price}</span>
-                            <span class="icon-rub"></span>
-                        </span>
-                    </p>
-                    <p><span data-id="${key}" class="btn btn-white btn-outline-white cartButton">В корзину</span></p>
+    for(tab in items){
+        let html = '';
+        let obj = items[tab];
+        Object.keys(obj).forEach(key => {
+            html += `
+            <div class="col-md-3 text-center">
+                <div class="menu-wrap">
+                    <span class="menu-img img mb-4" style="background-image: url(images/${obj[key].image});"></span>
+                    <div class="text">
+                        <h3><span>${obj[key].name}</span></h3>
+                        <p class="descriptionMenu" tabindex="0">${obj[key].description}</p>
+                        <p class="price" style="display: flex">
+                            <span style="display: flex; align-items: center; margin: 0 auto;">
+                                <span style="margin-right: 0.3em">${obj[key].price}</span>
+                                <span class="icon-rub"></span>
+                            </span>
+                        </p>
+                        <p><span data-id="${key}" class="btn btn-white btn-outline-white cartButton">В корзину</span></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-    })
-    let domEl = $(html);
-    $('#v-pills-1 > .row').append(domEl);
+        `;
+        })
+        let num;
+        switch(tab){
+            case 'rolls': num = 1; break;
+            case 'sets':  num = 2; break;
+            case 'pizza': num = 3; break;
+            case 'panaz': num = 4; break;
+            default: break;
+        }
+        let domEl = $(html);
+        $(`#v-pills-${num} > .row`).append(domEl);
+    }
+   
 }
 
 function contentSelect(cart){
