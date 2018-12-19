@@ -147,25 +147,25 @@ const items = {
 
     sets: [
         {
-            image: "sets/bigset.JPG",
+            image: "Sets/bigset.JPG",
             name: "Биг сэт",
             description: `Ролл с угрем, Филадельфия с лососем, Филадельфия, Бонита, Бангкок, Запечённый с лососем, Запечённый с курицей `,
             price: 990
         },
         {
-            image: "sets/megaset.JPG",
+            image: "Sets/megaset.JPG",
             name: "МЕГА сэт",
             description: `Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
             price: 1200
         },
         {
-            image: "sets/classicset.JPG",
+            image: "Sets/classicset.JPG",
             name: "Классик сэт",
             description: `Цезарь, Филадельфия с лососем, Филадельфия, Ролл с угрем, Ролл с огурцом`,
             price: 510
         },
         {
-            image: "sets/Wonder.JPG",
+            image: "Sets/Wonder.JPG",
             name: "Wonder сэт",
             description: "Филадельфия с лососем, Калифорния, Ролл с огурцом, Ролл с лососем",
             price: 380
