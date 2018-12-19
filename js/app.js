@@ -127,19 +127,19 @@ const items = {
         {
             image: "rolls/Fudziyama.JPG",
             name: "Фудзияма",
-            description: "240 грамм<br>Сыр сливочный, лосось капченый, рис, соус Виск",
+            description: "240 г.<br>Сыр сливочный, лосось капченый, рис, соус Виск",
             price: 280
         },
         {
             image: "rolls/Cezar.JPG",
             name: "Цезарь",
-            description: "180 грамм<br>Огурец, помидоры, болгарский перец, авокадо",
+            description: "180 г.<br>Огурец, помидоры, болгарский перец, авокадо",
             price: 210
         },
         {
             image: "rolls/goryachiVAssort.jpg",
             name: "Запеченный с лососем",
-            description: "280 грамм<br>Сыр сливочный, лосось, панировка",
+            description: "280 г.<br>Сыр сливочный, лосось, панировка",
             price: 280
         }
         
