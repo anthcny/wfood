@@ -2,43 +2,43 @@ const items = {
     pizza: [
         {
             image: "pizza/margarita.jpg",
-            name: "Маргарита",
+            name: 'Маргарита',
             description: `Соус мутти, томаты, сыр`,
             price: 270
         },
         {
             image: "pizza/vegetarianskaya.jpg",
-            name: "Вегетарианская",
+            name: 'Вегетарианская',
             description: 'Соус мутти, болгарский перец, шампиньоны, помидоры, красный лук, оливки, болгарский перец, сыр',
             price: 330
         },
         {
             image: "pizza/domashnaya.jpg",
-            name: "Домашняя",
+            name: 'Домашняя',
             description: 'Соус мутти, болгарский перец, бекон, шампиньоны, помидоры, корнишоны, оливки',
             price: 420
         },
         {
             image: "pizza/myasnaya.jpg",
-            name: "Мясная",
+            name: 'Мясная',
             description: 'Соус мутти, курицца, ветчна, пепперони, бекон, охот.колбаски, оливки, сыр',
             price: 490
         },
         {
             image: "pizza/Skrevetkami.jpg",
-            name: "С креветками",
+            name: 'С креветками',
             description: 'Соус мутти, креветки, сыр',
             price: 510
         },
         {
             image: "pizza/BBQ.jpg",
-            name: "BBQ",
+            name: 'BBQ',
             description: 'Соус мутти, соус BBQ, куринная грудка, ананас, сыр',
             price: 460
         },
         {
             image: "pizza/Assorti.jpg",
-            name: "Ассорти",
+            name: 'Ассорти',
             description: 'Соус мутти, корнишонны, шампиньоны, ветчина, бекон, оливки, сыр',
             price: 440
         },
@@ -48,97 +48,97 @@ const items = {
     rolls: [
         {
             image: "rolls/bangcoc.jpg",
-            name: "Бангкок",
+            name: 'Ролл "Бангкок"',
             description: "240 г.<br>Лосось, сыр сливочный, авокадо, семя кунжутное, рис",
             price: 260
         },
         {
             image: "rolls/bonita.jpg",
-            name: "Бонито",
+            name: 'Ролл "Бонито"',
             description: "240 г.<br>Лосось терьяки, огурец, сыр сливочный, стружка тунца, рис",
             price: 210
         },
         {
             image: "rolls/california.jpg",
-            name: "Калифорния",
+            name: 'Ролл "Калифорния"',
             description: "240 г.<br>Лосось, огурец, авокадо, икра масаго, рис",
             price: 230
         },
         {
             image: "rolls/newyork.jpg",
-            name: "Нью Йорк",
+            name: 'Ролл "Нью Йорк"',
             description: "240 г.<br>Лосось, огурец , рис",
             price: 220
         },
         {
             image: "rolls/rollsKrabKremom.jpg",
-            name: "Ролл с краб-кремом",
+            name: 'Ролл "Крабовый"',
             description: "180 г.<br>Краб-крем, рис",
             price: 175
         },
         {
             image: "rolls/RollSogurcom.JPG",
-            name: "Ролл с огурцом",
+            name: 'Ролл с огурцом',
             description: "120 г.<br> Огурец, рис",
             price: 60
         },
         {
             image: "rolls/rollSUgrem.JPG",
-            name: "Ролл с угрем",
+            name: 'Ролл с угрем',
             description: "240 г.<br> Угорь, рис, унаги соус",
             price: 280
         },
         {
             image: "rolls/tokio.JPG",
-            name: "Токио",
+            name: 'Ролл "Токио"',
             description: "240 г.<br>Тунец, огурец, сыр сливочный, рис",
             price: 240
         },
         {
             image: "rolls/treugolVAssort.jpg",
-            name: "Треугольный",
+            name: 'Треугольный с лососем',
             description: "240 г.<br>Огурец, сыр сливочный, лосось, семя кунжутное",
             price: 230
         },
         {
             image: "rolls/filadelfiasLososem.jpg",
-            name: "Филадельфия с лососем",
+            name: 'Филадельфия с лососем',
             description: "240 г.<br>Лосось, сыр сливочный, рис",
             price: 240
         },
         {
             image: "rolls/filadelfiasTuncom.JPG",
-            name: "Филадельфия с тунцом",
+            name: 'Филадельфия с тунцом',
             description: "240 г.<br>Тунец, сыр сливочный, рис",
             price: 240
         },
         {
             image: "rolls/filadelfiaSUgrem.jpg",
-            name: "Филадельфия с угрем",
+            name: 'Филадельфия с угрем',
             description: "240 г.<br>Угорь, сыр сливочный, рис",
             price: 280
         },
         {
             image: "rolls/filadelfia.JPG",
-            name: "Филадельфия",
+            name: 'Филадельфия с лососем',
             description: "240 г.<br>Сыр сливочный, авокадо, лосось, икра масаго, рис",
             price: 240
         },
         {
             image: "rolls/Fudziyama.JPG",
-            name: "Фудзияма",
+            name: 'Ролл "Фудзияма"',
             description: "240 г.<br>Сыр сливочный, лосось капченый, рис, соус Виск",
             price: 280
         },
         {
             image: "rolls/Cezar.JPG",
-            name: "Цезарь",
+            name: 'Ролл "Цезарь"',
             description: "180 г.<br>Огурец, помидоры, болгарский перец, авокадо",
             price: 210
         },
         {
             image: "rolls/goryachiVAssort.jpg",
-            name: "Запеченный с лососем",
+            name: 'Запеченный с лососем',
             description: "280 г.<br>Сыр сливочный, лосось, панировка",
             price: 280
         }
