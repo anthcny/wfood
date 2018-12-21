@@ -685,6 +685,10 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
+  #wflogo{
+    margin-top: 1em;
+  }
+
 .container {
   width: 100%;
   padding-right: 15px;
@@ -696,13 +700,22 @@ pre {
       max-width: 540px; } }
   @media (min-width: 768px) {
     .container {
-      max-width: 720px; } }
+      max-width: 720px; }
+    #wflogo{
+      margin-top: 3em;
+    } }
   @media (min-width: 992px) {
     .container {
-      max-width: 960px; } }
+      max-width: 960px; }
+    #wflogo{
+      margin-top: 3em;
+    } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1140px; }
+    #wflogo{
+      margin-top: 4em;
+    } }
 
 .container-fluid {
   width: 100%;
