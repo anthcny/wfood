@@ -215,6 +215,11 @@ function addHandlersToOrderForm(){
     let clickFuncActive = false;
     $('#order').bind('click', function(){
         if(clickFuncActive) return;
+        if(getCartSum() < 350){
+            clickFuncActive = true;
+            validationMessage('Минимальный заказ 350 р.', ()=>{clickFuncActive = false});
+            return;
+        }
         if(formValidation(()=>{clickFuncActive = true},()=>{clickFuncActive = false})){
             if(!checkHours(()=>{clickFuncActive = false})) return;
             saveFormInfoLocal();
@@ -389,9 +394,6 @@ function saveFormInfoLocal(){
     info.name = $('#userName').val();
     info.phone = $('#phone').val();
     info.adress = $('#adress').val();
-    //$('#userName').val('');
-    //$('#phone').val('');
-    //$('#adress').val('');
     info = JSON.stringify(info);
     localStorage.setItem('info', info);
 }
