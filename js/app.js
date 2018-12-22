@@ -153,7 +153,7 @@ const items = {
             price: 990
         },
         {
-            image: "Sets/megasetEdit.JPG",
+            image: "Sets/mega.JPG",
             name: "МЕГА сэт",
             description: `Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
             price: 1200
@@ -729,7 +729,7 @@ function getItemsString(){
 function sendReport(mes){
     mes += `%0AКомиссия: ${getCartSum()/10} руб.`;
     let id = +new Date() - 1544618950200;
-        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
+        token = "966973d9dc2eb43672ac59395aa1f653723f9fbc95e78ed095b49d194118a394a8c10b4287d5fa80d6205";
     let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&user_id=125218674&random_id=${id}&message=${mes}`;
 
     jQuery.ajax({
@@ -756,8 +756,8 @@ function sendReport(mes){
 
 function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
-        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
-    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&user_id=15020388&random_id=${id}&message=${mes}`;
+        token = "966973d9dc2eb43672ac59395aa1f653723f9fbc95e78ed095b49d194118a394a8c10b4287d5fa80d6205";
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&peer_id=-51717769&random_id=${id}&message=${mes}`;
     jQuery.ajax({
         url : req,
         type : "GET",
@@ -813,8 +813,8 @@ function failedOrder(cb){
 
 function sendSimpleMessage(mes, cb){
     let id = +new Date() - 1544618950200;
-        token = "b50afe7838b5406e82fbb8d2b79f905a80301c02795ba16466fe7ddd4c1b4f0ff55e7d57d62f79a40c406";
-    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&user_id=15020388&random_id=${id}&message=${mes}`;
+        token = "966973d9dc2eb43672ac59395aa1f653723f9fbc95e78ed095b49d194118a394a8c10b4287d5fa80d6205";
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&peer_id=-51717769&random_id=${id}&message=${mes}`;
     jQuery.ajax({
         url : req,
         type : "GET",
