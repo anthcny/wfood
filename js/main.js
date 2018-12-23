@@ -103,7 +103,7 @@
 			home.trigger('stop.owl.autoplay');
 		})
 		home.on('blur',function(){
-			home.trigger('play.owl.autoplay');
+			 home.trigger('play.owl.autoplay');
 		})
 
 	};

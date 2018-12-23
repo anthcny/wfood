@@ -92,9 +92,8 @@ html {
 }
 
 .colflex{
-  display: flex !important;
   flex-direction: column;
-  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
 }
 
 .descriptionMenu{
@@ -294,8 +293,6 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
-  min-height:100%; height:100%; 
-  overflow-y: scroll !important; 
  }
 
 [tabindex="-1"]:focus {
