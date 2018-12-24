@@ -60,6 +60,10 @@ html {
   color: white;
 }
 
+.yelColor{
+  color: #fac564;
+}
+
 .upBtn{
   font-size: 4em;
   position: fixed;
