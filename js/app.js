@@ -462,7 +462,7 @@ function displayOrderForm(){
     let domEl = $(html);
     $('#makeOrder').empty().append(domEl);
     var _phone = $('#phone');
-    if (_phone & _phone.mask) {
+    if (_phone && _phone.mask) {
         _phone.mask("+7 (999) 999 9999", {placeholder: ""});
     }
     addHandlersToOrderForm();
