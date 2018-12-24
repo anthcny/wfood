@@ -64,6 +64,12 @@ html {
   color: #fac564;
 }
 
+@media (max-width: 1199px){
+  .links{
+    min-width: 55%;
+  }
+}
+
 .upBtn{
   font-size: 4em;
   position: fixed;
