@@ -307,5 +307,42 @@
 
 
 
+	if(getMobileOperatingSystem() === 'Android'){
+		let html = '<span class="icon-arrow-circle-up upBtn" id="up"></span><span class="icon-arrow-circle-down downBtn" id="down"></span>';
+		$('body').append($(html));
+	  	$('#down').bind('click', function(){
+			let clientHeight = document.documentElement.clientHeight/2;
+				$('body, html').animate({scrollTop: pageYOffset + clientHeight}, 400);
+		  });
+		$('#up').bind('click', function(){
+		let clientHeight = document.documentElement.clientHeight;
+			$('body, html').animate({scrollTop: pageYOffset - clientHeight}, 400);
+		});
+
+		$(window).scroll(function(){
+			let st = $(this).scrollTop(),
+				nav = $('#up, #down');
+			if(st > 600){
+				if(!nav.hasClass('dontShow')){
+					nav.addClass('dontShow');
+				}
+			}
+			if(st <= 600){
+				nav.removeClass('dontShow');
+			}
+		});
+	}
+
+
 })(jQuery);
 
+
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    return "unknown";
+}

@@ -52,6 +52,26 @@ html {
 
   /* ---------------- */
 
+.downBtn{
+  font-size: 4em;
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+  color: white;
+}
+
+.upBtn{
+  font-size: 4em;
+  position: fixed;
+  bottom: 1.5em;
+  right: 0.5em;
+  color: white;
+}
+
+.dontShow{
+  display: none;
+}
+
 .marginBtm{
   margin-bottom: 1em;
   align-self: baseline;
