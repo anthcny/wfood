@@ -307,7 +307,7 @@
 
 
 
-	if(getMobileOperatingSystem() === 'Android'){
+	if(getMobileOperatingSystem() === 'Android' && $('#slider').length > 0){
 		let html = '<span class="icon-arrow-circle-up upBtn" id="up"></span><span class="icon-arrow-circle-down downBtn" id="down"></span>';
 		$('body').append($(html));
 	  	$('#down').bind('click', function(){
@@ -339,7 +339,7 @@
 
 function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  
+
     if (/android/i.test(userAgent)) {
         return "Android";
     }

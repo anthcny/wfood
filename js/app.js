@@ -48,25 +48,25 @@ const items = {
     rolls: [
         {
             image: "rolls/bangcoc.jpg",
-            name: 'Ролл "Бангкок"',
+            name: 'Бангкок',
             description: "240 г.<br>Лосось, сыр сливочный, авокадо, семя кунжутное, рис",
             price: 260
         },
         {
             image: "rolls/bonita.jpg",
-            name: 'Ролл "Бонито"',
+            name: 'Бонито',
             description: "240 г.<br>Лосось терьяки, огурец, сыр сливочный, стружка тунца, рис",
             price: 210
         },
         {
             image: "rolls/california.jpg",
-            name: 'Ролл "Калифорния"',
+            name: 'Калифорния',
             description: "240 г.<br>Лосось, огурец, авокадо, икра масаго, рис",
             price: 230
         },
         {
             image: "rolls/newyork.jpg",
-            name: 'Ролл "Нью Йорк"',
+            name: 'Нью Йорк',
             description: "240 г.<br>Лосось, огурец , рис",
             price: 220
         },
@@ -90,7 +90,7 @@ const items = {
         },
         {
             image: "rolls/tokio.JPG",
-            name: 'Ролл "Токио"',
+            name: 'Токио',
             description: "240 г.<br>Тунец, огурец, сыр сливочный, рис",
             price: 240
         },
@@ -132,7 +132,7 @@ const items = {
         },
         {
             image: "rolls/Cezar.JPG",
-            name: 'Ролл "Цезарь"',
+            name: 'Цезарь',
             description: "180 г.<br>Огурец, помидоры, болгарский перец, авокадо",
             price: 210
         },
@@ -245,7 +245,7 @@ function contentLoad(){
         let obj = items[tab];
         Object.keys(obj).forEach(key => {
             html += `
-            <div class="col-md-3 text-center">
+            <div class="col-md-4 text-center">
                 <div class="menu-wrap">
                     <span class="menu-img img mb-4" style="background-image: url(images/${obj[key].image});"></span>
                     <div class="text">
