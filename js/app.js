@@ -120,7 +120,7 @@ const items = {
         },
         {
             image: "rolls/filadelfia.JPG",
-            name: 'Филадельфия с лососем',
+            name: 'Филадельфия',
             description: "240 г.<br>Сыр сливочный, авокадо, лосось, икра масаго, рис",
             price: 240
         },
@@ -187,7 +187,7 @@ const items = {
         },
         {
             image: "panaz/funchozasKuricei.jpg",
-            name: "Фунчеза с курицей",
+            name: "Фунчоза с курицей",
             description: "Болгарский перец, цукини, красный лук, грибы, курица",
             price: 210
         }
