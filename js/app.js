@@ -3,43 +3,43 @@ const items = {
         {
             image: "pizza/margarita.jpg",
             name: 'Маргарита',
-            description: `Соус мутти, томаты, сыр`,
+            description: `400 г.<br>Соус мутти, томаты, сыр`,
             price: 270
         },
         {
             image: "pizza/vegetarianskaya.jpg",
             name: 'Вегетарианская',
-            description: 'Соус мутти, болгарский перец, шампиньоны, помидоры, красный лук, оливки, болгарский перец, сыр',
+            description: '600 г.<br>Соус мутти, болгарский перец, шампиньоны, помидоры, красный лук, оливки, болгарский перец, сыр',
             price: 330
         },
         {
             image: "pizza/domashnaya.jpg",
             name: 'Домашняя',
-            description: 'Соус мутти, болгарский перец, бекон, шампиньоны, помидоры, корнишоны, оливки',
+            description: '600 г.<br>Соус мутти, болгарский перец, бекон, шампиньоны, помидоры, корнишоны, оливки',
             price: 420
         },
         {
             image: "pizza/myasnaya.jpg",
             name: 'Мясная',
-            description: 'Соус мутти, курицца, ветчна, пепперони, бекон, охот.колбаски, оливки, сыр',
+            description: '600 г.<br>Соус мутти, курицца, ветчна, пепперони, бекон, охот.колбаски, оливки, сыр',
             price: 490
         },
         {
             image: "pizza/Skrevetkami.jpg",
             name: 'С креветками',
-            description: 'Соус мутти, креветки, сыр',
+            description: '600 г.<br>Соус мутти, креветки, сыр',
             price: 510
         },
         {
             image: "pizza/BBQ.jpg",
             name: 'BBQ',
-            description: 'Соус мутти, соус BBQ, куринная грудка, ананас, сыр',
+            description: '600 г.<br>Соус мутти, соус BBQ, куринная грудка, ананас, сыр',
             price: 460
         },
         {
             image: "pizza/Assorti.jpg",
             name: 'Ассорти',
-            description: 'Соус мутти, корнишонны, шампиньоны, ветчина, бекон, оливки, сыр',
+            description: '600 г.<br>Соус мутти, корнишонны, шампиньоны, ветчина, бекон, оливки, сыр',
             price: 440
         },
         
@@ -95,10 +95,28 @@ const items = {
             price: 240
         },
         {
+            image: "rolls/Cezar.JPG",
+            name: 'Цезарь',
+            description: "180 г.<br>Огурец, помидоры, болгарский перец, авокадо",
+            price: 210
+        },
+        {
             image: "rolls/treugolVAssort.jpg",
             name: 'Треугольный с лососем',
             description: "240 г.<br>Огурец, сыр сливочный, лосось, семя кунжутное",
             price: 230
+        },
+        {
+            image: "rolls/treugolVAssort.jpg",
+            name: 'Треугольный с курицей',
+            description: "240 г.<br>Огурец, сыр сливочный, курица, семя кунжутное",
+            price: 210
+        },
+        {
+            image: "rolls/treugolVAssort.jpg",
+            name: 'Треугольный с креветкой',
+            description: "240 г.<br>Огурец, сыр сливочный, креветки, семя кунжутное",
+            price: 250
         },
         {
             image: "rolls/filadelfiasLososem.jpg",
@@ -131,16 +149,28 @@ const items = {
             price: 280
         },
         {
-            image: "rolls/Cezar.JPG",
-            name: 'Цезарь',
-            description: "180 г.<br>Огурец, помидоры, болгарский перец, авокадо",
-            price: 210
+            image: "rolls/goryachiVAssort.jpg",
+            name: 'Запеченный с лососем',
+            description: "300 г.<br>Сыр сливочный, лосось, панировка",
+            price: 260
         },
         {
             image: "rolls/goryachiVAssort.jpg",
-            name: 'Запеченный с лососем',
-            description: "280 г.<br>Сыр сливочный, лосось, панировка",
-            price: 280
+            name: 'Запеченный с креветкой',
+            description: "300 г.<br>Сыр сливочный, креветки, панировка",
+            price: 270
+        },
+        {
+            image: "rolls/goryachiVAssort.jpg",
+            name: 'Запеченный с угрем',
+            description: "300 г.<br>Сыр сливочный, угорь, панировка",
+            price: 270
+        },
+        {
+            image: "rolls/goryachiVAssort.jpg",
+            name: 'Запеченный с курицей',
+            description: "300 г.<br>Сыр сливочный, курица, панировка",
+            price: 240
         }
         
     ],
@@ -148,27 +178,33 @@ const items = {
     sets: [
         {
             image: "Sets/bigset.JPG",
+            name: "Зимний сэт",
+            description: `1000 г.<br>Ролл с огурцом, Филадельфия с лососем, Фиеста, Микадо с кунжутом, Микадо с икрой`,
+            price: 400
+        },
+        {
+            image: "Sets/bigset.JPG",
             name: "Биг сэт",
-            description: `Ролл с угрем, Филадельфия с лососем, Филадельфия, Бонита, Бангкок, Запечённый с лососем, Запечённый с курицей `,
+            description: `2000 г.<br>Ролл с угрем, Филадельфия с лососем, Филадельфия, Бонита, Бангкок, Запечённый с лососем, Запечённый с курицей `,
             price: 990
         },
         {
             image: "Sets/mega.jpg",
             name: "МЕГА сэт",
-            description: `Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
+            description: `2300 г.<br>Филадельфия с лососем, Филадельфия с угрем, Треугольный с лососем, Фудзияма, Ролл с лососем, Ролл с угрем, Запечённый с лососем, Запечённый с креветкой`,
             price: 1200
         },
         {
             image: "Sets/classicset.JPG",
             name: "Классик сэт",
-            description: `Цезарь, Филадельфия с лососем, Филадельфия, Ролл с угрем, Ролл с огурцом`,
-            price: 510
+            description: `1150 г.<br>Цезарь, Филадельфия с лососем, Филадельфия, Ролл с угрем, Ролл с огурцом`,
+            price: 520
         },
         {
             image: "Sets/Wonder.JPG",
             name: "Wonder сэт",
-            description: "Филадельфия с лососем, Калифорния, Ролл с огурцом, Ролл с лососем",
-            price: 380
+            description: "850 г.<br>Филадельфия с лососем, Калифорния, Ролл с огурцом, Ролл с лососем",
+            price: 390
         },
     ],
 
@@ -176,20 +212,56 @@ const items = {
         {
             image: "panaz/chesnochniRisSKuricei.jpg",
             name: "Рис с курицей",
-            description: "Болгарский перец, цукини, морковь, красный лук, чеснок, курица",
+            description: "270 г.<br>Болгарский перец, цукини, морковь, красный лук, чеснок, курица",
             price: 210
+        },
+        {
+            image: "panaz/chesnochniRisSKuricei.jpg",
+            name: "Рис с креветками",
+            description: "270 г.<br>Болгарский перец, цукини, морковь, красный лук, чеснок, креветки",
+            price: 245
+        },
+        {
+            image: "panaz/chesnochniRisSKuricei.jpg",
+            name: "Рис с телятиной",
+            description: "270 г.<br>Болгарский перец, цукини, морковь, красный лук, чеснок, телятина",
+            price: 230
         },
         {
             image: "panaz/sobaskuricei.jpg",
             name: "Соба с курицей",
-            description: "Болгарский перец, цукини, красный лук, грибы, курица",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, курица",
             price: 190
+        },
+        {
+            image: "panaz/sobaskuricei.jpg",
+            name: "Соба с креветками",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, креветки",
+            price: 225
+        },
+        {
+            image: "panaz/sobaskuricei.jpg",
+            name: "Соба с телятиной",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, телятина",
+            price: 210
         },
         {
             image: "panaz/funchozasKuricei.jpg",
             name: "Фунчоза с курицей",
-            description: "Болгарский перец, цукини, красный лук, грибы, курица",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, курица",
             price: 210
+        },
+        {
+            image: "panaz/funchozasKuricei.jpg",
+            name: "Фунчоза с креветками",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, креветки",
+            price: 245
+        },
+        {
+            image: "panaz/funchozasKuricei.jpg",
+            name: "Фунчоза с телятиной",
+            description: "270 г.<br>Болгарский перец, цукини, красный лук, грибы, телятиной",
+            price: 230
         }
     ]
 }
