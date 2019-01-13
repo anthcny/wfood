@@ -177,7 +177,7 @@ const items = {
 
     sets: [
         {
-            image: "Sets/bigset.JPG",
+            image: "Sets/zimniy.jpg",
             name: "Зимний сэт",
             description: `1000 г.<br>Ролл с огурцом, Филадельфия с лососем, Фиеста, Микадо с кунжутом, Микадо с икрой`,
             price: 400
