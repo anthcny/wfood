@@ -834,7 +834,8 @@ function sendReport(mes){
 function sendMessage(mes, cb){
     let id = +new Date() - 1544618950200;
         token = "966973d9dc2eb43672ac59395aa1f653723f9fbc95e78ed095b49d194118a394a8c10b4287d5fa80d6205";
-    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&peer_id=-51717769&random_id=${id}&message=${mes}`;
+    //let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&peer_id=-51717769&random_id=${id}&message=${mes}`;
+    let req=`https://api.vk.com/method/messages.send?access_token=${token}&v=5.92&user_id=525126485&random_id=${id}&message=${mes}`
     jQuery.ajax({
         url : req,
         type : "GET",
